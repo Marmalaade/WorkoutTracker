@@ -1,12 +1,11 @@
 package com.example.workouttracker.workouttracker
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.workouttracker.R
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
 
 
@@ -20,13 +19,10 @@ class WorkoutTrackerFragment : Fragment() {
     ): View? {
 
         binding = FragmentWorkoutTrackerBinding.inflate(inflater, container, false)
-        binding.nextbutton.setOnClickListener {
+        binding.next.setOnClickListener {
             requireView().findNavController()
                 .navigate(WorkoutTrackerFragmentDirections.actionWorkoutTrackerFragmentToQualityControlFragment())
         }
-
         return binding.root
     }
-
-
 }

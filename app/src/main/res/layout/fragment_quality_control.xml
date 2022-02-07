@@ -2,17 +2,221 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".qualitycontrol.QualityControlFragment">
 
-    <Button
-        android:id="@+id/backbutton"
+    <TextView
+        android:id="@+id/mood_text"
+        style="@style/PrimaryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PrewFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:text="@string/mood_quality"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mood_text">
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/first_cardview"
+                android:layout_width="@dimen/cardview_size"
+                android:layout_height="@dimen/cardview_size"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="@dimen/small_margin"
+                android:backgroundTint="@color/teal_200"
+                app:cardCornerRadius="@dimen/cardview_space"
+                app:cardElevation="@dimen/cardview_space">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/description"
+                        app:srcCompat="@drawable/ic_mood_1" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/second_cardview"
+                android:layout_width="@dimen/cardview_size"
+                android:layout_height="@dimen/cardview_size"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="@dimen/small_margin"
+                android:backgroundTint="@color/teal_200"
+                app:cardCornerRadius="@dimen/cardview_space"
+                app:cardElevation="@dimen/cardview_space">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/description"
+                        app:srcCompat="@drawable/ic_mood_2" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/third_cardview"
+                android:layout_width="@dimen/cardview_size"
+                android:layout_height="@dimen/cardview_size"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="@dimen/small_margin"
+                android:backgroundTint="@color/teal_200"
+                app:cardCornerRadius="@dimen/cardview_space"
+                app:cardElevation="@dimen/cardview_space">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/description"
+                        app:srcCompat="@drawable/ic_mood_3" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fourth_cardview"
+                android:layout_width="@dimen/cardview_size"
+                android:layout_height="@dimen/cardview_size"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="@dimen/small_margin"
+                android:backgroundTint="@color/teal_200"
+                app:cardCornerRadius="@dimen/cardview_space"
+                app:cardElevation="@dimen/cardview_space">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/description"
+                        app:srcCompat="@drawable/ic_mood_4" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fifth_cardview"
+                android:layout_width="@dimen/cardview_size"
+                android:layout_height="@dimen/cardview_size"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="@dimen/small_margin"
+                android:backgroundTint="@color/teal_200"
+                app:cardCornerRadius="@dimen/cardview_space"
+                app:cardElevation="@dimen/cardview_space">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/description"
+                        app:srcCompat="@drawable/ic_mood_5" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sixth_cardview"
+                android:layout_width="@dimen/cardview_size"
+                android:layout_height="@dimen/cardview_size"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="@dimen/small_margin"
+                android:backgroundTint="@color/teal_200"
+                app:cardCornerRadius="@dimen/cardview_space"
+                app:cardElevation="@dimen/cardview_space">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/description"
+                        app:srcCompat="@drawable/ic_mood_6" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
