@@ -16,7 +16,7 @@ class WorkoutTrackerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentWorkoutTrackerBinding.inflate(inflater, container, false)
         binding.next.setOnClickListener {
