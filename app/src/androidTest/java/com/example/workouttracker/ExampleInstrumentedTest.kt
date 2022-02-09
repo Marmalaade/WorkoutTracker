@@ -1,24 +1,58 @@
 package com.example.workouttracker
 
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.lifecycle.LiveData
+import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import com.example.workouttracker.database.Train
+import com.example.workouttracker.database.TrainDao
+import com.example.workouttracker.database.TrainDatabase
 
+import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.io.IOException
 
-import org.junit.Assert.*
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class SleepDatabaseTest {
+
+    private lateinit var trainDao: TrainDao
+    private lateinit var db: TrainDatabase
+
+    @Before
+    fun createDb() {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        db = Room.inMemoryDatabaseBuilder(context, TrainDatabase::class.java)
+            .allowMainThreadQueries()
+            .build()
+        trainDao = db.trainDatabaseDao
+    }
+
+    @After
+    @Throws(IOException::class)
+    fun closeDb() {
+        db.close()
+    }
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.workouttracker", appContext.packageName)
+    @Throws(Exception::class)
+    fun insertAndGetAllTrains() {
+        val train = Train()
+        trainDao.insert(train)
+        val allTrain: LiveData<List<Train>> = trainDao.getAllTrain()
+        assertEquals(allTrain.value?.get(1), null)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun insertAndGetTodaysTrain() {
+        val train = Train()
+        trainDao.insert(train)
+        val presentTrain = trainDao.getTodaysTrains()
+        assertEquals(presentTrain?.trainingQuality, -1)
     }
 }
+

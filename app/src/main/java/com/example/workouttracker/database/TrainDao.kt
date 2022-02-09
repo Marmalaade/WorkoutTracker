@@ -24,5 +24,5 @@ interface TrainDao {
     fun getAllTrain(): LiveData<List<Train>>
 
     @Query("SELECT * FROM TRAINING_TABLE ORDER BY trainingId DESC LIMIT 1")
-    fun getTodaysTrain(): Train?
+    fun getTodaysTrains(): Train?
 }
