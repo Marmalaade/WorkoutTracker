@@ -18,6 +18,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    buildFeatures {
+        dataBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -61,8 +64,9 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0"
 
     // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
-
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.4.1"
 

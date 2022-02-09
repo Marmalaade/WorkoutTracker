@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.workouttracker.R
 import com.example.workouttracker.databinding.FragmentQualityControlBinding
 
 
@@ -17,7 +19,7 @@ class QualityControlFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentQualityControlBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_quality_control, container, false)
         return binding.root
     }
 }
