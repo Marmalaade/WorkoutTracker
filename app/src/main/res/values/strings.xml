@@ -8,4 +8,19 @@
     <string name="training_time">Your training time</string>
     <string name="description">mood_image</string>
     <string name="mood_quality">How was the training?</string>
+
+
+    <string name="title"><![CDATA[<h3>HERE IS YOUR TRAIN DATA</h3>]]></string>
+    <string name="start_time"><![CDATA[<b>Start:</b>]]></string>
+    <string name="end_time"><![CDATA[<b>End:</b>]]></string>
+    <string name="quality"><![CDATA[<b>Train Quality:</b>]]></string>
+    <string name="hours_train"><![CDATA[<b>Hours:Minutes:Seconds</b>]]></string>
+
+    <string name="zero_very_bad">Very bad</string>
+    <string name="one_poor">Poor</string>
+    <string name="two_soso">So-so</string>
+    <string name="three_ok">OK</string>
+    <string name="four_pretty_good">Pretty good</string>
+    <string name="five_excellent">Nice</string>
+
 </resources>

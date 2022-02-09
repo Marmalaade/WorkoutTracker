@@ -3,6 +3,7 @@ package com.example.workouttracker.workouttracker
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.example.workouttracker.database.Train
 import com.example.workouttracker.database.TrainDao
 import kotlinx.coroutines.*
@@ -15,7 +16,11 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     private var presentTraining = MutableLiveData<Train?>()
 
-    private var trains = database.getTodaysTrains()
+    private var trains = database.getAllTrain()
+
+    val trainsString = Transformations.map(trains) { trains ->
+        formatTrains(trains, application.resources)
+    }
 
     init {
         initializePresentTraining()
