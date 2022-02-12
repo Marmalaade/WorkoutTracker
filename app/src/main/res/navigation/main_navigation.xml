@@ -15,7 +15,7 @@
             android:id="@+id/action_workoutTrackerFragment_to_qualityControlFragment"
             app:destination="@id/qualityControlFragment"
             app:enterAnim="@anim/slide_int_right"
-            app:popEnterAnim="@anim/slide_int_right" />
+            app:popEnterAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/qualityControlFragment"
@@ -28,6 +28,7 @@
         <action
             android:id="@+id/action_qualityControlFragment_to_workoutTrackerFragment"
             app:destination="@id/workoutTrackerFragment"
+            app:enterAnim="@anim/alpha"
             app:launchSingleTop="false"
             app:popUpTo="@id/workoutTrackerFragment"
             app:popUpToInclusive="true" />

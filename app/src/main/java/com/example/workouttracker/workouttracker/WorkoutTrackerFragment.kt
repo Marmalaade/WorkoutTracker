@@ -46,6 +46,7 @@ class WorkoutTrackerFragment : Fragment() {
                 workoutTrackerViewModel.doneSnackBar()
             }
         })
+
         return binding.root
     }
 }
