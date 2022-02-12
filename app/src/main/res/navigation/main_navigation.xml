@@ -4,8 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/workoutTrackerFragment">
-
+    app:startDestination="@id/splashScreenFragment">
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.workouttracker.splashscreen.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_workoutTrackerFragment"
+            app:destination="@id/workoutTrackerFragment"
+            app:enterAnim="@anim/alpha" />
+    </fragment>
     <fragment
         android:id="@+id/workoutTrackerFragment"
         android:name="com.example.workouttracker.workouttracker.WorkoutTrackerFragment"
@@ -33,4 +42,6 @@
             app:popUpTo="@id/workoutTrackerFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
+
 </navigation>

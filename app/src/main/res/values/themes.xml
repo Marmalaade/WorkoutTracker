@@ -20,4 +20,9 @@
         <item name="textFillColor">@color/black</item>
 
     </style>
+
+    <style name="LabelTextView">
+        <item name="android:textSize">36sp</item>
+        <item name="textFillColor">@color/white</item>
+    </style>
 </resources>

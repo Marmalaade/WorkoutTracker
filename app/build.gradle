@@ -70,6 +70,9 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.4.1"
 
+    //Gifs
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
     // CardView
     implementation "androidx.cardview:cardview:1.0.0"
     // Testing
