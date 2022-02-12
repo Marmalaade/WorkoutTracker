@@ -16,11 +16,11 @@
     <string name="quality"><![CDATA[<b>Train Quality:</b>]]></string>
     <string name="hours_train"><![CDATA[<b>Hours:Minutes:Seconds;</b>]]></string>
 
-    <string name="zero_very_bad">Very bad</string>
-    <string name="one_poor">Poor</string>
-    <string name="two_soso">So-so</string>
-    <string name="three_ok">OK</string>
-    <string name="four_pretty_good">Pretty good</string>
-    <string name="five_excellent">Nice</string>
+    <string name="one_very_bad">Very bad</string>
+    <string name="two_poor">Poor</string>
+    <string name="three_soso">Such a</string>
+    <string name="four_ok">Good enough</string>
+    <string name="five_pretty_good">Cool training</string>
+    <string name="six_excellent">Feel like a monster</string>
 
 </resources>
