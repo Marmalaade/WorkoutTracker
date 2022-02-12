@@ -22,6 +22,23 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     private val _navigateToQualityControl = MutableLiveData<Train?>()
 
+    private val _snackBarEvent = MutableLiveData<Boolean>()
+
+    val startButtonVisible = Transformations.map(presentTraining) {
+        null == it
+    }
+
+    val stopButtonVisible = Transformations.map(presentTraining) {
+        null != it
+    }
+
+    val clearButtonVisible = Transformations.map(trains) {
+        it?.isNotEmpty()
+    }
+
+    val snackBarEvent: LiveData<Boolean>
+        get() = _snackBarEvent
+
     val navigateToQualityControl: LiveData<Train?>
         get() = _navigateToQualityControl
 
@@ -35,6 +52,10 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     fun navigationDone() {
         _navigateToQualityControl.value = null
+    }
+
+    fun doneSnackBar() {
+        _snackBarEvent.value = false
     }
 
     private fun initializePresentTraining() {
@@ -86,6 +107,7 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
         uiScope.launch {
             clear()
             presentTraining.value = null
+            _snackBarEvent.value = true
         }
     }
 

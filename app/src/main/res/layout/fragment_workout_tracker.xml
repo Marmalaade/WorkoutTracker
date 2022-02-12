@@ -44,7 +44,9 @@
             app:layout_constraintBaseline_toBaselineOf="@id/stop_button"
             app:layout_constraintEnd_toStartOf="@+id/stop_button"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:enabled="@{workoutTrackerViewModel.startButtonVisible}"
+            />
 
         <Button
             android:id="@+id/stop_button"
@@ -56,7 +58,9 @@
             android:text="@string/stop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/start_button"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:enabled="@{workoutTrackerViewModel.stopButtonVisible}"
+            />
 
         <Button
             android:id="@+id/clear_button"
@@ -69,7 +73,9 @@
             android:text="@string/clear"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:enabled="@{workoutTrackerViewModel.clearButtonVisible}"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

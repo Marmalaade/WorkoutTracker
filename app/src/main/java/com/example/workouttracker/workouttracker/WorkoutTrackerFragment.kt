@@ -1,6 +1,5 @@
 package com.example.workouttracker.workouttracker
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,7 @@ import androidx.navigation.findNavController
 import com.example.workouttracker.R
 import com.example.workouttracker.database.TrainDatabase
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class WorkoutTrackerFragment : Fragment() {
@@ -36,6 +36,14 @@ class WorkoutTrackerFragment : Fragment() {
                 view?.findNavController()
                     ?.navigate(WorkoutTrackerFragmentDirections.actionWorkoutTrackerFragmentToQualityControlFragment(train.trainingId))
                 workoutTrackerViewModel.navigationDone()
+            }
+        })
+
+        workoutTrackerViewModel.snackBarEvent.observe(viewLifecycleOwner, Observer {
+            if (it == true) {
+                Snackbar.make(requireActivity().findViewById(android.R.id.content), getString(R.string.cleard), Snackbar.LENGTH_SHORT)
+                    .show()
+                workoutTrackerViewModel.doneSnackBar()
             }
         })
         return binding.root
