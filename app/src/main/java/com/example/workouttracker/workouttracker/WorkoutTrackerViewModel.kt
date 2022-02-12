@@ -2,10 +2,12 @@ package com.example.workouttracker.workouttracker
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.workouttracker.database.Train
 import com.example.workouttracker.database.TrainDao
+import com.example.workouttracker.formatTrains
 import kotlinx.coroutines.*
 
 class WorkoutTrackerViewModel(val database: TrainDao, application: Application) : AndroidViewModel(application) {
@@ -18,12 +20,21 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     private var trains = database.getAllTrain()
 
+    private val _navigateToQualityControl = MutableLiveData<Train?>()
+
+    val navigateToQualityControl: LiveData<Train?>
+        get() = _navigateToQualityControl
+
     val trainsString = Transformations.map(trains) { trains ->
         formatTrains(trains, application.resources)
     }
 
     init {
         initializePresentTraining()
+    }
+
+    fun navigationDone() {
+        _navigateToQualityControl.value = null
     }
 
     private fun initializePresentTraining() {
@@ -61,6 +72,7 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
             val oldTrain = presentTraining.value ?: return@launch
             oldTrain.endTime = System.currentTimeMillis()
             update(oldTrain)
+            _navigateToQualityControl.value = oldTrain
         }
     }
 

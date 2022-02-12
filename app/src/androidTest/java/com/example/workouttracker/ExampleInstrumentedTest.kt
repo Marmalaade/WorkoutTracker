@@ -22,7 +22,6 @@ class SleepDatabaseTest {
     private lateinit var trainDao: TrainDao
     private lateinit var db: TrainDatabase
 
-    @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         db = Room.inMemoryDatabaseBuilder(context, TrainDatabase::class.java)

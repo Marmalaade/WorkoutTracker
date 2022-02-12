@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,18 +10,26 @@
         android:id="@+id/workoutTrackerFragment"
         android:name="com.example.workouttracker.workouttracker.WorkoutTrackerFragment"
         android:label="fragment_workout_tracker"
-        tools:layout="@layout/fragment_workout_tracker" >
+        tools:layout="@layout/fragment_workout_tracker">
         <action
             android:id="@+id/action_workoutTrackerFragment_to_qualityControlFragment"
-            app:destination="@id/qualityControlFragment" />
+            app:destination="@id/qualityControlFragment"
+            app:enterAnim="@anim/slide_int_right"
+            app:popEnterAnim="@anim/slide_int_right" />
     </fragment>
     <fragment
         android:id="@+id/qualityControlFragment"
         android:name="com.example.workouttracker.qualitycontrol.QualityControlFragment"
         android:label="fragment_quality_control"
-        tools:layout="@layout/fragment_quality_control" >
+        tools:layout="@layout/fragment_quality_control">
+        <argument
+            android:name="trainKey"
+            app:argType="long" />
         <action
             android:id="@+id/action_qualityControlFragment_to_workoutTrackerFragment"
-            app:destination="@id/workoutTrackerFragment" />
+            app:destination="@id/workoutTrackerFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/workoutTrackerFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

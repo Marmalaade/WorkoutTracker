@@ -20,6 +20,8 @@ class QualityControlFragment : Fragment() {
     ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_quality_control, container, false)
+
+        val application = requireNotNull(this.activity).application
         return binding.root
     }
 }

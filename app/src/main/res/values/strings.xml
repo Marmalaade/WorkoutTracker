@@ -14,7 +14,7 @@
     <string name="start_time"><![CDATA[<b>Start:</b>]]></string>
     <string name="end_time"><![CDATA[<b>End:</b>]]></string>
     <string name="quality"><![CDATA[<b>Train Quality:</b>]]></string>
-    <string name="hours_train"><![CDATA[<b>Hours:Minutes:Seconds</b>]]></string>
+    <string name="hours_train"><![CDATA[<b>Hours:Minutes:Seconds;</b>]]></string>
 
     <string name="zero_very_bad">Very bad</string>
     <string name="one_poor">Poor</string>
