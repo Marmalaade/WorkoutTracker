@@ -1,7 +1,6 @@
 package com.example.workouttracker.workouttracker
 
 import android.app.Application
-import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

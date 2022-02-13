@@ -13,12 +13,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main_color"
         tools:context=".workouttracker.WorkoutTrackerFragment">
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:background="@drawable/scroll_view"
+            android:scrollbarThumbVertical="@drawable/scroll_thumb"
             app:layout_constraintBottom_toTopOf="@+id/clear_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -27,55 +34,68 @@
 
             <TextView
                 android:id="@+id/textview"
+                style="@style/PrimaryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/normal_margin"
                 android:layout_marginTop="@dimen/normal_margin"
                 android:layout_marginEnd="@dimen/normal_margin"
+                android:fontFamily="@font/allerta_stencil"
                 android:text="@{workoutTrackerViewModel.trainsString}"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
         </ScrollView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_button"
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
+            android:background="@drawable/custom_button"
             android:enabled="@{workoutTrackerViewModel.startButtonVisible}"
             android:onClick="@{()->workoutTrackerViewModel.onStartTracking()}"
             android:text="@string/start"
+            android:textSize="@dimen/text_size"
             app:layout_constraintBaseline_toBaselineOf="@id/stop_button"
             app:layout_constraintEnd_toStartOf="@+id/stop_button"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/stop_button"
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
+            android:background="@drawable/custom_button"
             android:enabled="@{workoutTrackerViewModel.stopButtonVisible}"
             android:onClick="@{()->workoutTrackerViewModel.onStopTracking()}"
             android:text="@string/stop"
+            android:textSize="@dimen/text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/start_button"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/clear_button"
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
             android:layout_marginBottom="@dimen/normal_margin"
+            android:background="@drawable/custom_button"
             android:enabled="@{workoutTrackerViewModel.clearButtonVisible}"
             android:onClick="@{()->workoutTrackerViewModel.onClear()}"
             android:text="@string/clear"
+            android:textSize="@dimen/text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

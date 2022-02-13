@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -9,10 +10,11 @@
             type="com.example.workouttracker.qualitycontrol.QualityControlViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main_color"
         tools:context=".qualitycontrol.QualityControlFragment">
 
         <TextView
@@ -20,11 +22,15 @@
             style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="@dimen/normal_margin"
-            android:layout_marginBottom="@dimen/normal_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             android:text="@string/mood_quality"
+            android:textSize="28sp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +38,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/normal_margin"
+            android:layout_margin="@dimen/small_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +64,7 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(1)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
@@ -88,7 +94,7 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(2)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
@@ -118,7 +124,7 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(3)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
@@ -148,7 +154,7 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(4)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
@@ -178,7 +184,7 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(5)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
@@ -208,8 +214,9 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(6)}"
+                    app:cardBackgroundColor="@color/lime"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 

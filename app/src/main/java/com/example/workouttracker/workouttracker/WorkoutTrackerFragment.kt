@@ -1,10 +1,11 @@
 package com.example.workouttracker.workouttracker
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,6 +21,7 @@ class WorkoutTrackerFragment : Fragment() {
 
     private lateinit var binding: FragmentWorkoutTrackerBinding
 
+    @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,13 +44,20 @@ class WorkoutTrackerFragment : Fragment() {
 
         workoutTrackerViewModel.snackBarEvent.observe(viewLifecycleOwner, Observer {
             if (it == true) {
-                Snackbar.make(requireActivity().findViewById(android.R.id.content), getString(R.string.cleard), Snackbar.LENGTH_SHORT)
-                    .show()
+                showSnackBar()
                 workoutTrackerViewModel.doneSnackBar()
             }
         })
 
         return binding.root
+    }
+
+    @SuppressLint("ShowToast")
+    private fun showSnackBar() {
+        Snackbar.make(requireActivity().findViewById(android.R.id.content), R.string.cleared, Snackbar.LENGTH_SHORT)
+            .setBackgroundTint(ContextCompat.getColor(requireActivity(), R.color.dark_lime))
+            .setTextColor(ContextCompat.getColor(requireActivity(), R.color.white))
+            .show()
     }
 
 }
