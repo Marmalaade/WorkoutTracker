@@ -18,11 +18,12 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     private var presentTraining = MutableLiveData<Train?>()
 
-    private var trains = database.getAllTrain()
+    val trains = database.getAllTrain()
 
     private val _navigateToQualityControl = MutableLiveData<Train?>()
 
     private val _snackBarEvent = MutableLiveData<Boolean>()
+
 
     val startButtonVisible = Transformations.map(presentTraining) {
         null == it

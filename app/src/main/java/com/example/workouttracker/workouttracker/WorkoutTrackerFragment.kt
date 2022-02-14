@@ -34,6 +34,15 @@ class WorkoutTrackerFragment : Fragment() {
         binding.workoutTrackerViewModel = workoutTrackerViewModel
         binding.lifecycleOwner = this
 
+        val adapter = WorkoutTrackerAdapter()
+        binding.trainingsList.adapter = adapter
+
+        workoutTrackerViewModel.trains.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+
+        })
         workoutTrackerViewModel.navigateToQualityControl.observe(viewLifecycleOwner, Observer { train ->
             train?.let {
                 view?.findNavController()
