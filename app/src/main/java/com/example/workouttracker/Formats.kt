@@ -10,6 +10,8 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workouttracker.database.Train
 import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 fun convertNumericQualityToString(quality: Int, resources: Resources): String {
     var qualityString = resources.getString(R.string.four_ok)
@@ -25,6 +27,8 @@ fun convertNumericQualityToString(quality: Int, resources: Resources): String {
     return qualityString
 }
 
+private val ONE_MINUTE_MILLIS = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES)
+private val ONE_HOUR_MILLIS = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
 
 @SuppressLint("SimpleDateFormat")
 fun convertLongToDateString(systemTime: Long): String {
@@ -32,6 +36,24 @@ fun convertLongToDateString(systemTime: Long): String {
         .format(systemTime).toString()
 }
 
+fun convertDurationToFormatted(startTimeMilli: Long, endTimeMilli: Long, res: Resources): String {
+    val durationMilli = endTimeMilli - startTimeMilli
+    val weekdayString = SimpleDateFormat("EEEE", Locale.getDefault()).format(startTimeMilli)
+    return when {
+        durationMilli < ONE_MINUTE_MILLIS -> {
+            val seconds = TimeUnit.SECONDS.convert(durationMilli, TimeUnit.MILLISECONDS)
+            res.getString(R.string.seconds_length, seconds, weekdayString)
+        }
+        durationMilli < ONE_HOUR_MILLIS -> {
+            val minutes = TimeUnit.MINUTES.convert(durationMilli, TimeUnit.MILLISECONDS)
+            res.getString(R.string.minutes_length, minutes, weekdayString)
+        }
+        else -> {
+            val hours = TimeUnit.HOURS.convert(durationMilli, TimeUnit.MILLISECONDS)
+            res.getString(R.string.hours_length, hours, weekdayString)
+        }
+    }
+}
 
 fun formatTrains(nights: List<Train>, resources: Resources): Spanned {
     val sb = StringBuilder()
@@ -45,7 +67,6 @@ fun formatTrains(nights: List<Train>, resources: Resources): Spanned {
                 append(resources.getString(R.string.end_time))
                 append("\t${convertLongToDateString(it.endTime)}<br>")
                 append(resources.getString(R.string.quality))
-                append("\t${convertNumericQualityToString(it.trainingQuality, resources)}<br>")
                 append(resources.getString(R.string.hours_train))
                 // Hours
                 append("\t ${it.endTime.minus(it.startTime) / 1000 / 60 / 60}:")
@@ -62,4 +83,5 @@ fun formatTrains(nights: List<Train>, resources: Resources): Spanned {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
-class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
+
+class TextItemViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)

@@ -64,16 +64,17 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/lime"
+                    android:backgroundTint="@color/gold"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(1)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:background="@drawable/custom_button"
                         android:orientation="vertical">
 
                         <ImageView
@@ -94,16 +95,17 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/lime"
+                    android:backgroundTint="@color/gold"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(2)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:background="@drawable/custom_button"
                         android:orientation="vertical">
 
                         <ImageView
@@ -124,16 +126,17 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/lime"
+                    android:backgroundTint="@color/gold"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(3)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:background="@drawable/custom_button"
                         android:orientation="vertical">
 
                         <ImageView
@@ -154,15 +157,16 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/lime"
+                    android:backgroundTint="@color/gold"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(4)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:background="@drawable/custom_button"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -184,15 +188,16 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/lime"
+                    android:backgroundTint="@color/gold"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(5)}"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:background="@drawable/custom_button"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -214,16 +219,16 @@
                     android:layout_columnWeight="1"
                     android:layout_gravity="fill"
                     android:layout_margin="@dimen/small_margin"
-                    android:backgroundTint="@color/lime"
                     android:onClick="@{()->qualityControlViewModel.onSetWorkoutQuality(6)}"
-                    app:cardBackgroundColor="@color/lime"
+                    app:cardBackgroundColor="@color/gold"
                     app:cardCornerRadius="@dimen/cardview_space"
                     app:cardElevation="@dimen/cardview_space">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:background="@drawable/custom_button"
                         android:gravity="center"
                         android:orientation="vertical">
 
