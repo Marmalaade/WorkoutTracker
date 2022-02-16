@@ -23,11 +23,6 @@ class WorkoutTrackerFragment : Fragment() {
 
     private lateinit var binding: FragmentWorkoutTrackerBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        BackgroundMusicPlayer.startPlayer(requireContext())
-    }
-
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,16 +61,6 @@ class WorkoutTrackerFragment : Fragment() {
         })
 
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        BackgroundMusicPlayer.resumePlayer()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("mediaPLayer", "onDestroy")
     }
 
     @SuppressLint("ShowToast")

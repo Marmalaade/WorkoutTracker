@@ -2,7 +2,6 @@ package com.example.workouttracker.mediaplayer
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.util.Log
 import com.example.workouttracker.R
 
 object BackgroundMusicPlayer {
