@@ -1,31 +1,21 @@
 package com.example.workouttracker
 
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var mediaPLayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         hideSystemUI()
-        mediaPLayer = MediaPlayer.create(this, R.raw.background_music)
-        mediaPLayer.start()
     }
 
     override fun onPause() {
         super.onPause()
-        mediaPLayer.pause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mediaPLayer.seekTo(mediaPLayer.currentPosition);
-        mediaPLayer.start();
+        BackgroundMusicPlayer.pausePlayer()
     }
 
     private fun hideSystemUI() {

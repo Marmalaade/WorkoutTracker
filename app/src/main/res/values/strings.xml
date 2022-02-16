@@ -8,7 +8,7 @@
     <string name="training_time">Your training time</string>
     <string name="description">mood_image</string>
     <string name="mood_quality">How was the training?</string>
-    <string name="just_start">I am training...</string>
+    <string name="just_start">I\'am training...</string>
     <string name="label">Workout Tracker</string>
 
     <string name="title"><![CDATA[<h3>HERE IS YOUR TRAIN DATA</h3>]]></string>
@@ -26,8 +26,8 @@
     <string name="cleared">All data has been erased. You can\'t bring it back. Sad :(</string>
 
 
-    <string name="minutes_length">%d minutes on %s</string>
-    <string name="hours_length">%d hours on %s</string>
-    <string name="seconds_length">%d seconds on %s</string>
+    <string name="minutes_length">You exercised %d minutes on %s</string>
+    <string name="hours_length">You exercised %d hours on %s</string>
+    <string name="seconds_length">You exercised %d seconds on %s</string>
 
 </resources>

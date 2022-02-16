@@ -2,6 +2,7 @@ package com.example.workouttracker.workouttracker
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +15,18 @@ import androidx.navigation.findNavController
 import com.example.workouttracker.R
 import com.example.workouttracker.database.TrainDatabase
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
+import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 import com.google.android.material.snackbar.Snackbar
 
 
 class WorkoutTrackerFragment : Fragment() {
 
     private lateinit var binding: FragmentWorkoutTrackerBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        BackgroundMusicPlayer.startPlayer(requireContext())
+    }
 
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCreateView(
@@ -34,7 +41,7 @@ class WorkoutTrackerFragment : Fragment() {
         binding.workoutTrackerViewModel = workoutTrackerViewModel
         binding.lifecycleOwner = this
 
-        val adapter = WorkoutTrackerAdapter()
+        val adapter = WorkoutTrackerAdapter(requireContext())
         binding.trainingsList.adapter = adapter
 
         workoutTrackerViewModel.trains.observe(viewLifecycleOwner, Observer {
@@ -59,6 +66,16 @@ class WorkoutTrackerFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        BackgroundMusicPlayer.resumePlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("mediaPLayer", "onDestroy")
     }
 
     @SuppressLint("ShowToast")

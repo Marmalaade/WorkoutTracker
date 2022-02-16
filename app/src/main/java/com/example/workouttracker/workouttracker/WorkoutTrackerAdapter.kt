@@ -1,22 +1,34 @@
 package com.example.workouttracker.workouttracker
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workouttracker.R
 import com.example.workouttracker.convertDurationToFormatted
 import com.example.workouttracker.database.Train
 
-class WorkoutTrackerAdapter : RecyclerView.Adapter<WorkoutTrackerAdapter.ViewHolder>() {
+class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter<WorkoutTrackerAdapter.ViewHolder>() {
+
+    private var trainingTimeTextColor = Color.WHITE
+    private var trainingTimeText = "I'm training..."
 
     var data = listOf<Train>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
+    init {
+        trainingTimeTextColor = ContextCompat.getColor(context, R.color.gold)
+        trainingTimeText = context.resources.getString(R.string.just_start)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -26,12 +38,13 @@ class WorkoutTrackerAdapter : RecyclerView.Adapter<WorkoutTrackerAdapter.ViewHol
 
     override fun getItemCount() = data.size
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        val res = holder.itemView.context.resources
         if (item.startTime == item.endTime) {
-            "I'm training ...".also { holder.trainingTime.text = it }
-        } else holder.trainingTime.text = convertDurationToFormatted(item.startTime, item.endTime, res)
+            holder.trainingTime.text = trainingTimeText
+            holder.trainingTime.setTextColor(trainingTimeTextColor)
+        } else holder.trainingTime.text = convertDurationToFormatted(item.startTime, item.endTime, holder.itemView.context.resources)
 
         holder.qualityImage.setImageResource(
             when (item.trainingQuality) {

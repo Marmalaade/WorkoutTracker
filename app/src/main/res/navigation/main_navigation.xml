@@ -13,7 +13,8 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_workoutTrackerFragment"
             app:destination="@id/workoutTrackerFragment"
-            app:enterAnim="@anim/alpha" />
+            app:enterAnim="@anim/alpha"
+            app:launchSingleTop="false" />
     </fragment>
     <fragment
         android:id="@+id/workoutTrackerFragment"
