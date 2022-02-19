@@ -38,17 +38,8 @@ class WorkoutTrackerAdapter(private val context: Context) : ListAdapter<Train, W
                 binding.trainingLenght.text = trainingTimeText
                 binding.trainingLenght.setTextColor(trainingTimeTextColor)
             } else binding.trainingLenght.text = convertDurationToFormatted(item.startTime, item.endTime, itemView.context.resources)
-            binding.qualityImage.setImageResource(
-                when (item.trainingQuality) {
-                    1 -> R.drawable.ic_mood_1
-                    2 -> R.drawable.ic_mood_2
-                    3 -> R.drawable.ic_mood_3
-                    4 -> R.drawable.ic_mood_4
-                    5 -> R.drawable.ic_mood_5
-                    6 -> R.drawable.ic_mood_6
-                    else -> R.drawable.training_cat
-                }
-            )
+            binding.training = item
+            binding.executePendingBindings()
         }
 
         companion object {
