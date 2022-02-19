@@ -1,13 +1,9 @@
 package com.example.workouttracker.workouttracker
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.workouttracker.R
 import com.example.workouttracker.convertDurationToFormatted
 import com.example.workouttracker.database.Train
+import com.example.workouttracker.databinding.ListItemTrainingsTimeBinding
 
 private var trainingTimeTextColor = Color.WHITE
 private var trainingTimeText = "I'm training..."
@@ -35,17 +32,13 @@ class WorkoutTrackerAdapter(private val context: Context) : ListAdapter<Train, W
     }
 
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val trainingTime: TextView = itemView.findViewById(R.id.training_lenght)
-        private val qualityImage: ImageView = itemView.findViewById(R.id.quality_image)
+    class ViewHolder private constructor(private val binding: ListItemTrainingsTimeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Train) {
             if (item.startTime == item.endTime) {
-                trainingTime.text = trainingTimeText
-                trainingTime.setTextColor(trainingTimeTextColor)
-            } else trainingTime.text = convertDurationToFormatted(item.startTime, item.endTime, itemView.context.resources)
-
-            qualityImage.setImageResource(
+                binding.trainingLenght.text = trainingTimeText
+                binding.trainingLenght.setTextColor(trainingTimeTextColor)
+            } else binding.trainingLenght.text = convertDurationToFormatted(item.startTime, item.endTime, itemView.context.resources)
+            binding.qualityImage.setImageResource(
                 when (item.trainingQuality) {
                     1 -> R.drawable.ic_mood_1
                     2 -> R.drawable.ic_mood_2
@@ -61,8 +54,8 @@ class WorkoutTrackerAdapter(private val context: Context) : ListAdapter<Train, W
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.list_item_trainings_time, parent, false)
-                return ViewHolder(view)
+                val binding = ListItemTrainingsTimeBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
             }
         }
 

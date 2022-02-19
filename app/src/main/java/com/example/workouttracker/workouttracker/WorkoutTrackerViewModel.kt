@@ -24,7 +24,6 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     private val _snackBarEvent = MutableLiveData<Boolean>()
 
-
     val startButtonVisible = Transformations.map(presentTraining) {
         null == it
     }
@@ -43,9 +42,6 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
     val navigateToQualityControl: LiveData<Train?>
         get() = _navigateToQualityControl
 
-    val trainsString = Transformations.map(trains) { trains ->
-        formatTrains(trains, application.resources)
-    }
 
     init {
         initializePresentTraining()

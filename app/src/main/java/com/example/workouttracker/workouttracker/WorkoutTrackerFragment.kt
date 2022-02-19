@@ -1,12 +1,15 @@
 package com.example.workouttracker.workouttracker
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -21,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class WorkoutTrackerFragment : Fragment() {
 
+    private lateinit var transition: TransitionDrawable
     private lateinit var binding: FragmentWorkoutTrackerBinding
 
     @SuppressLint("ResourceAsColor", "ResourceType")
@@ -35,9 +39,9 @@ class WorkoutTrackerFragment : Fragment() {
         val workoutTrackerViewModel = ViewModelProvider(this, viewModelFactory)[WorkoutTrackerViewModel::class.java]
         binding.workoutTrackerViewModel = workoutTrackerViewModel
         binding.lifecycleOwner = this
-
         val adapter = WorkoutTrackerAdapter(requireContext())
         binding.trainingsList.adapter = adapter
+        backgroundTransition()
 
         workoutTrackerViewModel.trains.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -71,4 +75,8 @@ class WorkoutTrackerFragment : Fragment() {
             .show()
     }
 
+    private fun backgroundTransition() {
+        transition = binding.trainingsList.background as TransitionDrawable
+        transition.startTransition(4000)
+    }
 }
