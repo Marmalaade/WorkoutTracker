@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workouttracker.R
 import com.example.workouttracker.convertDurationToFormatted
@@ -17,14 +19,7 @@ import com.example.workouttracker.database.Train
 private var trainingTimeTextColor = Color.WHITE
 private var trainingTimeText = "I'm training..."
 
-class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter<WorkoutTrackerAdapter.ViewHolder>() {
-
-    var data = listOf<Train>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
+class WorkoutTrackerAdapter(private val context: Context) : ListAdapter<Train, WorkoutTrackerAdapter.ViewHolder>(TrainingDiffCallback()) {
     init {
         trainingTimeTextColor = ContextCompat.getColor(context, R.color.gold)
         trainingTimeText = context.resources.getString(R.string.just_start)
@@ -34,11 +29,8 @@ class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter
         return ViewHolder.from(parent)
     }
 
-    override fun getItemCount() = data.size
-
-    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 
@@ -75,6 +67,15 @@ class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter
         }
 
     }
+}
 
+class TrainingDiffCallback : DiffUtil.ItemCallback<Train>() {
+    override fun areItemsTheSame(oldItem: Train, newItem: Train): Boolean {
+        return oldItem.trainingId == newItem.trainingId
+    }
+
+    override fun areContentsTheSame(oldItem: Train, newItem: Train): Boolean {
+        return oldItem == newItem
+    }
 
 }
