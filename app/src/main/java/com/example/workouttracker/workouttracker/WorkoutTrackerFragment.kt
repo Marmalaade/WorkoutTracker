@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
@@ -39,7 +40,9 @@ class WorkoutTrackerFragment : Fragment() {
         val workoutTrackerViewModel = ViewModelProvider(this, viewModelFactory)[WorkoutTrackerViewModel::class.java]
         binding.workoutTrackerViewModel = workoutTrackerViewModel
         binding.lifecycleOwner = this
-        val adapter = WorkoutTrackerAdapter(requireContext())
+        val adapter = WorkoutTrackerAdapter(requireContext(), TrainingItemsListener { trainingId ->
+            Toast.makeText(context, "$trainingId", Toast.LENGTH_SHORT).show()
+        })
         binding.trainingsList.adapter = adapter
         backgroundTransition()
 

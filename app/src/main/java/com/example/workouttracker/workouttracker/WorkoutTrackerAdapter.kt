@@ -16,7 +16,8 @@ import com.example.workouttracker.databinding.ListItemTrainingsTimeBinding
 private var trainingTimeTextColor = Color.WHITE
 private var trainingTimeText = "I'm training..."
 
-class WorkoutTrackerAdapter(private val context: Context) : ListAdapter<Train, WorkoutTrackerAdapter.ViewHolder>(TrainingDiffCallback()) {
+class WorkoutTrackerAdapter(private val context: Context, private val clickListener: TrainingItemsListener) :
+    ListAdapter<Train, WorkoutTrackerAdapter.ViewHolder>(TrainingDiffCallback()) {
     init {
         trainingTimeTextColor = ContextCompat.getColor(context, R.color.gold)
         trainingTimeText = context.resources.getString(R.string.just_start)
@@ -27,13 +28,13 @@ class WorkoutTrackerAdapter(private val context: Context) : ListAdapter<Train, W
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position), clickListener)
     }
 
 
     class ViewHolder private constructor(private val binding: ListItemTrainingsTimeBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Train) {
+        fun bind(item: Train, clickListener: TrainingItemsListener) {
+            binding.clickListener = clickListener
             if (item.startTime == item.endTime) {
                 binding.trainingLenght.text = trainingTimeText
                 binding.trainingLenght.setTextColor(trainingTimeTextColor)
@@ -62,4 +63,8 @@ class TrainingDiffCallback : DiffUtil.ItemCallback<Train>() {
         return oldItem == newItem
     }
 
+}
+
+class TrainingItemsListener(val clickListener: (trainingId: Long) -> Unit) {
+    fun onClick(train: Train) = clickListener(train.trainingId)
 }
