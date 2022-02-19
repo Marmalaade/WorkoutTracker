@@ -14,10 +14,10 @@ import com.example.workouttracker.R
 import com.example.workouttracker.convertDurationToFormatted
 import com.example.workouttracker.database.Train
 
-class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter<WorkoutTrackerAdapter.ViewHolder>() {
+private var trainingTimeTextColor = Color.WHITE
+private var trainingTimeText = "I'm training..."
 
-    private var trainingTimeTextColor = Color.WHITE
-    private var trainingTimeText = "I'm training..."
+class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter<WorkoutTrackerAdapter.ViewHolder>() {
 
     var data = listOf<Train>()
         set(value) {
@@ -31,9 +31,7 @@ class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.list_item_trainings_time, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun getItemCount() = data.size
@@ -41,26 +39,42 @@ class WorkoutTrackerAdapter(private val context: Context) : RecyclerView.Adapter
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        if (item.startTime == item.endTime) {
-            holder.trainingTime.text = trainingTimeText
-            holder.trainingTime.setTextColor(trainingTimeTextColor)
-        } else holder.trainingTime.text = convertDurationToFormatted(item.startTime, item.endTime, holder.itemView.context.resources)
+        holder.bind(item)
+    }
 
-        holder.qualityImage.setImageResource(
-            when (item.trainingQuality) {
-                1 -> R.drawable.ic_mood_1
-                2 -> R.drawable.ic_mood_2
-                3 -> R.drawable.ic_mood_3
-                4 -> R.drawable.ic_mood_4
-                5 -> R.drawable.ic_mood_5
-                6 -> R.drawable.ic_mood_6
-                else -> R.drawable.training_cat
+
+    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val trainingTime: TextView = itemView.findViewById(R.id.training_lenght)
+        private val qualityImage: ImageView = itemView.findViewById(R.id.quality_image)
+        fun bind(item: Train) {
+            if (item.startTime == item.endTime) {
+                trainingTime.text = trainingTimeText
+                trainingTime.setTextColor(trainingTimeTextColor)
+            } else trainingTime.text = convertDurationToFormatted(item.startTime, item.endTime, itemView.context.resources)
+
+            qualityImage.setImageResource(
+                when (item.trainingQuality) {
+                    1 -> R.drawable.ic_mood_1
+                    2 -> R.drawable.ic_mood_2
+                    3 -> R.drawable.ic_mood_3
+                    4 -> R.drawable.ic_mood_4
+                    5 -> R.drawable.ic_mood_5
+                    6 -> R.drawable.ic_mood_6
+                    else -> R.drawable.training_cat
+                }
+            )
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.list_item_trainings_time, parent, false)
+                return ViewHolder(view)
             }
-        )
+        }
+
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val trainingTime: TextView = itemView.findViewById(R.id.training_lenght)
-        val qualityImage: ImageView = itemView.findViewById(R.id.quality_image)
-    }
+
 }
