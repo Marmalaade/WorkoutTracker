@@ -24,7 +24,7 @@
     <string name="five_pretty_good">Cool training</string>
     <string name="six_excellent">Feel like a monster</string>
     <string name="cleared">All data has been erased. You can\'t bring it back. Sad :(</string>
-
+    <string name="header">Your workout results</string>
 
     <string name="minutes_length">You exercised %d minutes on %s</string>
     <string name="hours_length">You exercised %d hours on %s</string>

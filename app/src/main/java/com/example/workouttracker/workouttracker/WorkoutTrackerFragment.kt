@@ -48,7 +48,7 @@ class WorkoutTrackerFragment : Fragment() {
 
         workoutTrackerViewModel.trains.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                adapter.addHeaderAndSubmitList(it)
             }
 
         })
@@ -70,7 +70,6 @@ class WorkoutTrackerFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("ShowToast")
     private fun showSnackBar() {
         Snackbar.make(requireActivity().findViewById(android.R.id.content), R.string.cleared, Snackbar.LENGTH_SHORT)
             .setBackgroundTint(ContextCompat.getColor(requireActivity(), R.color.dark_lime))
