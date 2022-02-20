@@ -7,6 +7,7 @@
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/custom_button.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/custom_snackbar.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/dialog_background.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_heart.xml" value="0.10260416666666666" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_mood_1.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_mood_2.xml" value="0.1" />
@@ -14,15 +15,17 @@
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_mood_4.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_mood_5.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_mood_6.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/ic_workout.xml" value="0.10260416666666666" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/recycler_background_transition.xml" value="0.14739583333333334" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/recycler_backgtound_transition.xml" value="0.15104166666666666" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/recycler_view.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/recycler_view_in_training.xml" value="0.15104166666666666" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/scroll_thumb.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/scroll_view.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/drawable/zoom_in.xml" value="0.25677083333333334" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
-        <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/custom_dialog.xml" value="0.1" />
+        <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/custom_dialog.xml" value="0.264" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/custom_snackbar.xml" value="0.1" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/fragment_during_workout.xml" value="0.136" />
         <entry key="..\:/SoftProgramms/ASprojects/WorkoutTracker/app/src/main/res/layout/fragment_quality_control.xml" value="0.1" />

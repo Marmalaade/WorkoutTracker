@@ -1,6 +1,7 @@
 package com.example.workouttracker.workouttracker
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workouttracker.R
 import com.example.workouttracker.convertDurationToFormatted
+import com.example.workouttracker.convertLongToDateString
 import com.example.workouttracker.database.Train
 import com.example.workouttracker.databinding.ListItemTrainingsTimeBinding
+import com.example.workouttracker.formatTrains
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -115,7 +118,8 @@ class TrainingDiffCallback : DiffUtil.ItemCallback<DataItem>() {
 }
 
 class TrainingItemsListener(val clickListener: (trainingId: Long) -> Unit) {
-    fun onClick(train: Train) = clickListener(train.trainingId)
+    fun onClick(train: Train) = clickListener(train.startTime)
+
 }
 
 sealed class DataItem {

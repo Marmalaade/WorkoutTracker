@@ -1,25 +1,25 @@
 package com.example.workouttracker.workouttracker
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.AnimationDrawable
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.workouttracker.R
+import com.example.workouttracker.convertLongToDateString
 import com.example.workouttracker.database.TrainDatabase
+import com.example.workouttracker.databinding.CustomDialogBinding
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
-import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -27,6 +27,7 @@ class WorkoutTrackerFragment : Fragment() {
 
     private lateinit var transition: TransitionDrawable
     private lateinit var binding: FragmentWorkoutTrackerBinding
+    private lateinit var dialogBinding: CustomDialogBinding
 
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCreateView(
@@ -40,9 +41,10 @@ class WorkoutTrackerFragment : Fragment() {
         val workoutTrackerViewModel = ViewModelProvider(this, viewModelFactory)[WorkoutTrackerViewModel::class.java]
         binding.workoutTrackerViewModel = workoutTrackerViewModel
         binding.lifecycleOwner = this
-        val adapter = WorkoutTrackerAdapter(requireContext(), TrainingItemsListener { trainingId ->
-            Toast.makeText(context, "$trainingId", Toast.LENGTH_SHORT).show()
+        val adapter = WorkoutTrackerAdapter(requireContext(), TrainingItemsListener { time ->
+            showInfoDialog(time)
         })
+
         binding.trainingsList.adapter = adapter
         backgroundTransition()
 
@@ -80,5 +82,16 @@ class WorkoutTrackerFragment : Fragment() {
     private fun backgroundTransition() {
         transition = binding.trainingsList.background as TransitionDrawable
         transition.startTransition(4000)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun showInfoDialog(item: Long) {
+        val dialog = context?.let { Dialog(it) }
+        dialogBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.custom_dialog, null, false)
+        dialogBinding.dialogInfoText.text = "${getString(R.string.time_format)} ${convertLongToDateString(item)}"
+        dialog?.setContentView(dialogBinding.root)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.setWindowAnimations(R.style.DialogAnimations)
+        dialog?.show()
     }
 }
