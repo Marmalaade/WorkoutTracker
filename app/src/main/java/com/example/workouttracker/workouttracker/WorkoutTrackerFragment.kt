@@ -1,6 +1,5 @@
 package com.example.workouttracker.workouttracker
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -29,7 +28,8 @@ class WorkoutTrackerFragment : Fragment() {
     private lateinit var binding: FragmentWorkoutTrackerBinding
     private lateinit var dialogBinding: CustomDialogBinding
 
-    @SuppressLint("ResourceAsColor", "ResourceType")
+    private var transitionTime: Int = 4000
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +46,7 @@ class WorkoutTrackerFragment : Fragment() {
         })
 
         binding.trainingsList.adapter = adapter
-        backgroundTransition()
+        backgroundTransition(binding.trainingsList.background as TransitionDrawable)
 
         workoutTrackerViewModel.trains.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -79,16 +79,15 @@ class WorkoutTrackerFragment : Fragment() {
             .show()
     }
 
-    private fun backgroundTransition() {
-        transition = binding.trainingsList.background as TransitionDrawable
-        transition.startTransition(4000)
+    private fun backgroundTransition(transition: TransitionDrawable) {
+        transition.startTransition(transitionTime)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun showInfoDialog(item: Long) {
         val dialog = context?.let { Dialog(it) }
         dialogBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.custom_dialog, null, false)
-        dialogBinding.dialogInfoText.text = "${getString(R.string.time_format)} ${convertLongToDateString(item)}"
+        backgroundTransition(dialogBinding.dialogLayout.background as TransitionDrawable)
+        "${getString(R.string.time_format)} ${convertLongToDateString(item)}".also { dialogBinding.dialogInfoText.text = it }
         dialog?.setContentView(dialogBinding.root)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog?.window?.setWindowAnimations(R.style.DialogAnimations)

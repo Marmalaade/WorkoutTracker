@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.workouttracker.database.Train
 import com.example.workouttracker.database.TrainDao
-import com.example.workouttracker.formatTrains
 import kotlinx.coroutines.*
 
 class WorkoutTrackerViewModel(val database: TrainDao, application: Application) : AndroidViewModel(application) {
@@ -63,7 +62,7 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
 
     private suspend fun getPresentTrainFromDB(): Train? {
         return withContext(Dispatchers.IO) {
-            var train = database.getTodaysTrains()
+            var train = database.getPresentTrains()
             if (train?.endTime != train?.startTime) {
                 train = null
             }

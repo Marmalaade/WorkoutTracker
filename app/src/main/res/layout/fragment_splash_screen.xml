@@ -10,16 +10,27 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/training_gif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/normal_margin"
-            android:src="@drawable/training"
+            android:layout_width="@dimen/main_gif_size"
+            android:layout_height="@dimen/main_gif_size"
+            android:src="@drawable/training_cat"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.527"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.499" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_bar"
+            android:layout_width="@dimen/cardview_size"
+            android:layout_height="@dimen/cardview_size"
+            app:layout_constraintBottom_toTopOf="@+id/label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/training_gif"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
 
         <TextView
             android:id="@+id/label"

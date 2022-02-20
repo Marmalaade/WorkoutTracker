@@ -11,4 +11,6 @@
     <dimen name="text_size">18sp</dimen>
     <dimen name="tittle_text_margin">24dp</dimen>
     <dimen name="snackBar_height">70dp</dimen>
+    <dimen name="main_gif_size">225dp</dimen>
+    <dimen name="training_icon_size">52dp</dimen>
 </resources>

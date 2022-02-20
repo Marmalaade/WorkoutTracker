@@ -25,9 +25,14 @@ class SplashScreenFragment : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             view?.findNavController()?.navigate(SplashScreenFragmentDirections.actionSplashScreenFragmentToWorkoutTrackerFragment())
-        }, 2000)
+        }, 2500)
 
         return binding.root
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.loadingBar.pauseAnimation()
     }
 
 }

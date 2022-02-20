@@ -22,7 +22,7 @@
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/quality_image"
             android:layout_width="@dimen/icon_size"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/icon_size"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="@dimen/minimal_margin"
             android:layout_marginBottom="@dimen/minimal_margin"

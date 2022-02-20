@@ -10,7 +10,6 @@ import com.example.workouttracker.database.TrainDatabase
 
 import org.junit.After
 import org.junit.Assert.assertEquals
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
@@ -47,10 +46,10 @@ class SleepDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertAndGetTodaysTrain() {
+    fun insertAndGetPresentTrain() {
         val train = Train()
         trainDao.insert(train)
-        val presentTrain = trainDao.getTodaysTrains()
+        val presentTrain = trainDao.getPresentTrains()
         assertEquals(presentTrain?.trainingQuality, -1)
     }
 }
