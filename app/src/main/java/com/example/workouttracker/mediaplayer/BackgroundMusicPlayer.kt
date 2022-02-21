@@ -22,6 +22,6 @@ object BackgroundMusicPlayer {
             mediaPLayer.seekTo(mediaPLayer.currentPosition)
             mediaPLayer.start()
         }
-
     }
+
 }

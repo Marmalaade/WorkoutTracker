@@ -2,6 +2,7 @@ package com.example.workouttracker.workouttracker
 
 import android.app.Dialog
 import android.graphics.Color
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
@@ -19,12 +20,12 @@ import com.example.workouttracker.convertLongToDateString
 import com.example.workouttracker.database.TrainDatabase
 import com.example.workouttracker.databinding.CustomDialogBinding
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
+import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 import com.google.android.material.snackbar.Snackbar
 
 
 class WorkoutTrackerFragment : Fragment() {
 
-    private lateinit var transition: TransitionDrawable
     private lateinit var binding: FragmentWorkoutTrackerBinding
     private lateinit var dialogBinding: CustomDialogBinding
 
@@ -44,7 +45,20 @@ class WorkoutTrackerFragment : Fragment() {
         val adapter = WorkoutTrackerAdapter(requireContext(), TrainingItemsListener { time ->
             showInfoDialog(time)
         })
+        workoutTrackerViewModel.isPlaying.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.musicIcon.apply {
+                    setImageResource(R.drawable.anim_volume_off_to_on)
+                    (drawable as AnimatedVectorDrawable).start()
+                    BackgroundMusicPlayer.resumePlayer()
+                }
+            } else binding.musicIcon.apply {
+                setImageResource(R.drawable.anim_volume_on_to_off)
+                (drawable as AnimatedVectorDrawable).start()
+                BackgroundMusicPlayer.pausePlayer()
+            }
 
+        })
         binding.trainingsList.adapter = adapter
         backgroundTransition(binding.trainingsList.background as TransitionDrawable)
 

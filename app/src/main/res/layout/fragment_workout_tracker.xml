@@ -69,6 +69,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <ImageButton
+            android:id="@+id/music_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:background="@android:color/transparent"
+            android:onClick="@{()->workoutTrackerViewModel.onMusicPlayerClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/anim_volume_on_to_off" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/clear_button"
             style="@style/PrimaryTextView"

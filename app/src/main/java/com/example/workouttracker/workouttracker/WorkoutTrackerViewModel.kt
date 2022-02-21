@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.workouttracker.database.Train
 import com.example.workouttracker.database.TrainDao
+import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 import kotlinx.coroutines.*
 
 class WorkoutTrackerViewModel(val database: TrainDao, application: Application) : AndroidViewModel(application) {
@@ -16,6 +17,8 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private var presentTraining = MutableLiveData<Train?>()
+
+    private var _isPlaying = MutableLiveData(true)
 
     val trains = database.getAllTrain()
 
@@ -34,6 +37,9 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
     val clearButtonVisible = Transformations.map(trains) {
         it?.isNotEmpty()
     }
+
+    val isPlaying: LiveData<Boolean>
+        get() = _isPlaying
 
     val snackBarEvent: LiveData<Boolean>
         get() = _snackBarEvent
@@ -116,6 +122,10 @@ class WorkoutTrackerViewModel(val database: TrainDao, application: Application) 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun onMusicPlayerClick() {
+        _isPlaying.value = !_isPlaying.value!!
     }
 
 }
