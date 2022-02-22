@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.workouttracker.R
 import com.example.workouttracker.convertLongToDateString
+import com.example.workouttracker.customview.MediaPlayerSwitchView
 import com.example.workouttracker.database.TrainDatabase
 import com.example.workouttracker.databinding.CustomDialogBinding
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
@@ -28,7 +29,6 @@ class WorkoutTrackerFragment : Fragment() {
 
     private lateinit var binding: FragmentWorkoutTrackerBinding
     private lateinit var dialogBinding: CustomDialogBinding
-
     private var transitionTime: Int = 4000
 
     override fun onCreateView(
@@ -45,30 +45,19 @@ class WorkoutTrackerFragment : Fragment() {
         val adapter = WorkoutTrackerAdapter(requireContext(), TrainingItemsListener { time ->
             showInfoDialog(time)
         })
-        workoutTrackerViewModel.isPlaying.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                binding.musicIcon.apply {
-                    setImageResource(R.drawable.anim_volume_off_to_on)
-                    (drawable as AnimatedVectorDrawable).start()
-                    BackgroundMusicPlayer.resumePlayer()
-                }
-            } else binding.musicIcon.apply {
-                setImageResource(R.drawable.anim_volume_on_to_off)
-                (drawable as AnimatedVectorDrawable).start()
-                BackgroundMusicPlayer.pausePlayer()
-            }
-
+        workoutTrackerViewModel.isPlaying.observe(viewLifecycleOwner, {
+            binding.musicIcon.setState(it)
         })
         binding.trainingsList.adapter = adapter
         backgroundTransition(binding.trainingsList.background as TransitionDrawable)
 
-        workoutTrackerViewModel.trains.observe(viewLifecycleOwner, Observer {
+        workoutTrackerViewModel.trains.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.addHeaderAndSubmitList(it)
             }
 
         })
-        workoutTrackerViewModel.navigateToQualityControl.observe(viewLifecycleOwner, Observer { train ->
+        workoutTrackerViewModel.navigateToQualityControl.observe(viewLifecycleOwner, { train ->
             train?.let {
                 view?.findNavController()
                     ?.navigate(WorkoutTrackerFragmentDirections.actionWorkoutTrackerFragmentToQualityControlFragment(train.trainingId))
@@ -76,7 +65,7 @@ class WorkoutTrackerFragment : Fragment() {
             }
         })
 
-        workoutTrackerViewModel.snackBarEvent.observe(viewLifecycleOwner, Observer {
+        workoutTrackerViewModel.snackBarEvent.observe(viewLifecycleOwner, {
             if (it == true) {
                 showSnackBar()
                 workoutTrackerViewModel.doneSnackBar()

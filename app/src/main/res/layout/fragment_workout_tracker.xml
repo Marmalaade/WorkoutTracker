@@ -69,7 +69,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageButton
+        <com.example.workouttracker.customview.MediaPlayerSwitchView
             android:id="@+id/music_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
