@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.workouttracker.database.Train
 import com.example.workouttracker.database.TrainDao
-import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 import kotlinx.coroutines.*
 
 class WorkoutTrackerViewModel(val database: TrainDao, application: Application) : AndroidViewModel(application) {

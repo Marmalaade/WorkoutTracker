@@ -2,7 +2,6 @@ package com.example.workouttracker.workouttracker
 
 import android.app.Dialog
 import android.graphics.Color
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
@@ -12,16 +11,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.workouttracker.R
 import com.example.workouttracker.convertLongToDateString
-import com.example.workouttracker.customview.MediaPlayerSwitchView
 import com.example.workouttracker.database.TrainDatabase
 import com.example.workouttracker.databinding.CustomDialogBinding
 import com.example.workouttracker.databinding.FragmentWorkoutTrackerBinding
-import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 import com.google.android.material.snackbar.Snackbar
 
 

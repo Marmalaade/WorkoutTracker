@@ -1,8 +1,8 @@
 package com.example.workouttracker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.workouttracker.mediaplayer.BackgroundMusicPlayer
 
 class MainActivity : AppCompatActivity() {
